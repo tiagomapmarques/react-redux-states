@@ -1,11 +1,16 @@
 {
-  "name": "redux-state",
+  "name": "react-redux-states",
   "version": "0.0.1",
-  "description": "Redux abstraction for state management",
+  "description": "Redux abstraction for state management in React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tiago Marques",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  }
 }
