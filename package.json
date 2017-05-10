@@ -1,0 +1,11 @@
+{
+  "name": "redux-state",
+  "version": "0.0.1",
+  "description": "Redux abstraction for state management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiago Marques",
+  "license": "MIT"
+}
