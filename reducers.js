@@ -1,4 +1,6 @@
 
-export const reducerSelector = (...args) => state => Object.keys(state)
+const reducerSelector = (...args) => state => Object.keys(state)
   .filter(key => args.indexOf(key) >= 0)
-  .reduce((accumulator, key) => ({ ...accumulator, [key]: state[key] }), {});
+  .reduce((accumulator, key) => Object.assign({}, accumulator, { [key]: state[key] }), {});
+
+module.exports = reducerSelector;

@@ -1,12 +1,15 @@
-import { createStore as reduxCreateStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+const redux = require('redux');
+const reduxCreateStore = redux.createStore;
+const combineReducers = redux.combineReducers;
+const applyMiddleware = redux.applyMiddleware;
+const thunk = require('redux-thunk').default;
 
 const middleware = [ thunk ];
-if (window.devToolsExtension) {
+if (window && window.devToolsExtension && typeof window.devToolsExtension === 'function') {
   middleware.push(window.devToolsExtension());
 }
 
-export const createStore = (reducersObject, storeReplacer) => (initialState) => {
+const createStore = (reducersObject, storeReplacer) => (initialState) => {
   const reducers = combineReducers(reducersObject);
   const store = reduxCreateStore(reducers, initialState, applyMiddleware(...middleware));
   if (storeReplacer && typeof storeReplacer === 'function') {
@@ -14,3 +17,5 @@ export const createStore = (reducersObject, storeReplacer) => (initialState) => 
   }
   return store;
 };
+
+module.exports = createStore;
