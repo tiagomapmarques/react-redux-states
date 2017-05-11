@@ -1,7 +1,8 @@
 
-const splitter = require('./config').configuration.ACTION_SPLITTER;
+const config = require('./config')();
 
-const structReducer = (typeName, stateChangers) => (prevState, action) => {
+const structReducer = (typeName, stateChangers, configuration) => (prevState, action) => {
+  const splitter = (configuration && configuration.ACTIONS_SPLITTER) || config.ACTIONS_SPLITTER;
   const actionType = action.type.split(splitter);
   if (actionType[0].toLowerCase() === typeName.toLowerCase()) {
     let stateChangerFunction = stateChangers;

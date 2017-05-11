@@ -1,9 +1,9 @@
 
 const reduxConnect = require('react-redux').connect;
-const actionSelector = require('./action-creators');
+const actionSelector = require('./actions');
 const reducerSelector = require('./reducers');
 
-const connect = (actions) => (...args) => Component =>
-  reduxConnect(reducerSelector(...args), actionSelector(actions)(...args))(Component);
+const connect = (actions, configuration) => (...args) =>
+  reduxConnect(reducerSelector(...args), actionSelector(actions, configuration)(...args));
 
 module.exports = connect;

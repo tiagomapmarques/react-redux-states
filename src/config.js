@@ -1,15 +1,11 @@
 
-const configuration = {
+const config = {
   ACTIONS_PREFIX: '',
   ACTIONS_SUFFIX: 'Actions',
+  ACTIONS_SPLITTER: '/',
   INIT_FUNCTION: 'init',
-  ACTION_SPLITTER: '/',
 };
 
-const configure = (config) => {
-  config && Object.keys(configuration).forEach(key => {
-    configuration[key] = config[key] !== undefined ? config[key] : configuration[key];
-  });
-};
+const getConfig = newConfig => Object.assign({}, config, newConfig);
 
-module.exports = { configure, configuration };
+module.exports = getConfig;

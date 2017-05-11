@@ -1,10 +1,8 @@
 
 const connect = require('./src/connect');
-const createStore = require('./src/store');
+const createStore = require('./src/create-store');
 const structReducer = require('./src/struct-reducer');
 
-const config = require('./src/config');
-const configure = config.configure;
-const configuration = config.configuration;
+const getConfig = require('./src/config');
 
-module.exports = { connect, createStore, structReducer, configure, configuration };
+module.exports = { connect, createStore, structReducer, getConfig };

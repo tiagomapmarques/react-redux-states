@@ -1,14 +1,14 @@
-const config = require('./config').configuration;
+const config = require('./config')();
 
-const prefix = config.ACTIONS_PREFIX;
-const suffix = config.ACTIONS_SUFFIX;
-const init = config.INIT_FUNCTION;
-
-const strip = string => {
+const strip = (string, configuration) => {
+  const prefix = (configuration && configuration.ACTIONS_PREFIX) || config.ACTIONS_PREFIX;
+  const suffix = (configuration && configuration.ACTIONS_SUFFIX) || config.ACTIONS_SUFFIX;
   let result = string;
+
   if (result.indexOf(prefix) === 0) {
     result = result.substring(prefix.length);
   }
+
   const lengthWithoutSuffix = result.length - suffix.length;
   if (result.indexOf(suffix) === lengthWithoutSuffix) {
     result = result.substring(0, lengthWithoutSuffix);
@@ -21,12 +21,13 @@ const actionsToDispatchables = (actionsObject, dispatch) => Object.keys(actionsO
     [key]: (...args) => dispatch(actionsObject[key](...args)),
   }), {});
 
-const actionSelector = actions => (...args) => dispatch => {
+const actionSelector = (actions, configuration) => (...args) => dispatch => {
   const selected = Object.keys(actions)
-    .filter(key => args.indexOf(strip(key)) >= 0)
+    .filter(key => args.indexOf(strip(key, configuration)) >= 0)
     .reduce((accumulator, key) => Object.assign({}, accumulator, {
       [key]: actionsToDispatchables(actions[key], dispatch),
     }), {});
+  const init = (configuration && configuration.INIT_FUNCTION) || config.INIT_FUNCTION;
   Object.keys(selected).forEach(item => {
     selected[item][init] && typeof selected[item][init] === 'function' && selected[item][init]();
   });
