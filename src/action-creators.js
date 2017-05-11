@@ -1,16 +1,16 @@
 const config = require('./config').configuration;
 
-const prefix = config.ACTION_PREFIX;
-const suffix = config.ACTION_SUFFIX;
+const prefix = config.ACTIONS_PREFIX;
+const suffix = config.ACTIONS_SUFFIX;
 const init = config.INIT_FUNCTION;
 
 const strip = string => {
   let result = string;
-  if (result.indexOf(config.ACTION_PREFIX) === 0) {
-    result = result.substring(config.ACTION_PREFIX.length);
+  if (result.indexOf(prefix) === 0) {
+    result = result.substring(prefix.length);
   }
-  const lengthWithoutSuffix = result.length - config.ACTION_PREFIX.length;
-  if (result.indexOf(config.ACTION_SUFFIX) === lengthWithoutSuffix) {
+  const lengthWithoutSuffix = result.length - suffix.length;
+  if (result.indexOf(suffix) === lengthWithoutSuffix) {
     result = result.substring(0, lengthWithoutSuffix);
   }
   return result;
