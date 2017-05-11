@@ -1,11 +1,11 @@
-import { connect as reduxConnect } from 'react-redux';
 
-import { actionSelector, ACTIONS_SUFFIX as suffix } from './action-creators';
-import { reducerSelector } from './reducers';
+const reduxConnect = require('react-redux').connect;
+const constants = require('./constants');
+const actionSelector = require('./action-creators');
+const reducerSelector = require('./reducers');
+const createStore = require('./store');
 
-export { createStore } from './store';
-
-export const ACTIONS_SUFFIX = suffix;
-
-export const connect = (actions) => (...args) => Component =>
+const connect = (actions) => (...args) => Component =>
   reduxConnect(reducerSelector(...args), actionSelector(actions)(...args))(Component);
+
+module.exports = { connect, createStore, constants };
