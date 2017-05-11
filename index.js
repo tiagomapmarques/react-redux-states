@@ -1,12 +1,7 @@
 
-const reduxConnect = require('react-redux').connect;
-const constants = require('./constants');
-const actionSelector = require('./action-creators');
-const structReducer = require('./struct-reducer');
-const reducerSelector = require('./reducers');
-const createStore = require('./store');
-
-const connect = (actions) => (...args) => Component =>
-  reduxConnect(reducerSelector(...args), actionSelector(actions)(...args))(Component);
+const constants = require('./src/constants');
+const structReducer = require('./src/struct-reducer');
+const createStore = require('./src/store');
+const connect = require('./src/connect');
 
 module.exports = { connect, createStore, structReducer, constants };
