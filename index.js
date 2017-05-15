@@ -1,8 +1,12 @@
-
-const connect = require('./src/connect');
-const createStore = require('./src/create-store');
-const structReducer = require('./src/struct-reducer');
-
-const getConfig = require('./src/config');
-
-module.exports = { connect, createStore, structReducer, getConfig };
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var provider_1 = require("./lib/provider");
+exports.Provider = provider_1.Provider;
+var connect_1 = require("./lib/connect");
+exports.connect = connect_1.connect;
+var create_store_1 = require("./lib/create-store");
+exports.createStore = create_store_1.createStore;
+var reducer_1 = require("./lib/reducer");
+exports.reducer = reducer_1.reducer;
+var config_1 = require("./lib/config");
+exports.getConfig = config_1.getConfig;
