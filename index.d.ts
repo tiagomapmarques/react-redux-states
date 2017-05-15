@@ -54,7 +54,7 @@ export interface StateChangerGroupList {
 
 export interface StateDomain<S> {
   [key: string]: S;
-};
+}
 
 export interface StateValues {
   [key: string]: StateDomain<any> | any;
