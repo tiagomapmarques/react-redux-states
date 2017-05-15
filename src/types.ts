@@ -1,4 +1,4 @@
-import { ComponentDecorator, Store } from 'react-redux';
+import * as ReactRedux from 'react-redux';
 
 export interface Configuration {
   ACTIONS_PREFIX: string;
@@ -64,7 +64,12 @@ export type DispatchedFunction = (...args: any[]) => void;
 export type DispatchFunction = (_: ActionObject | ActionDispatchable) => void;
 export type GetStateFunction = () => StateDomain<any>;
 
-export type Connector = (..._: string[]) => ComponentDecorator<{}, any>;
+export type Store<S> = ReactRedux.Store<S>;
+
+export type Connector = (..._: string[]) => ReactRedux.ComponentDecorator<{}, any>;
 export type StoreCreator = <S extends StateValues>(_?: StateValues) => Store<S>;
 
-export { Store };
+export declare function connect(actions: ActionGroupList, config: Configuration): Connector;
+export declare function createStore<S>(reducersObject: StateChangerGroupList): Store<S>;
+export declare function reducer<S>(typeName: string, stateChangers: StateChangerGroup<S>, config: Configuration): StateChangerReduced<S>
+export declare function getConfig(newConfig?: FlexibleConfiguration): Configuration;

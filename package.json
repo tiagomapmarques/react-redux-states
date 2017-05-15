@@ -1,21 +1,21 @@
 {
   "name": "react-redux-states",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Redux abstraction for state management in React",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
+    "dts": "dts-gen -m react-redux-states",
     "build": "tsc -p ./tsconfig.json"
   },
   "author": "Tiago Marques",
   "license": "MIT",
-  "devDpendencies": {
-    "@types/react-redux": "^5.0.4 || 4.4.40",
-    "typescript": "^2.3.2"
-  },
   "dependencies": {
+    "@types/react-redux": "^5.0.4 || 4.4.40",
     "react": "^15.0.0",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
-  }
+    "redux-thunk": "^2.2.0",
+    "typescript": "^2.3.2"
+  },
+  "devDependencies": {}
 }

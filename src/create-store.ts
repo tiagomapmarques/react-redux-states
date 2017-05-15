@@ -1,8 +1,7 @@
 import { createStore as reduxCreateStore, combineReducers, applyMiddleware, Middleware } from 'redux';
 import * as thunk from 'redux-thunk';
-import { Store } from 'react-redux';
 
-import { StateChangerGroupList } from './types';
+import { StateChangerGroupList, Store } from './types';
 
 declare var window: any;
 

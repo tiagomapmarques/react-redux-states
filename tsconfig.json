@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "./lib",
+    "module": "commonjs",
+    "declaration": false,
     "noEmitOnError": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
