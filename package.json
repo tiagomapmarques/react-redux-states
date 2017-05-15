@@ -4,7 +4,6 @@
   "description": "Redux abstraction for state management in React",
   "main": "./lib/index.js",
   "scripts": {
-    "dts": "dts-gen -m react-redux-states",
     "build": "tsc -p ./tsconfig.json"
   },
   "author": "Tiago Marques",
